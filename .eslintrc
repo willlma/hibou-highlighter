@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "extends": "eslint-config-airbnb/base",
+  "rules": {
+    "import/prefer-default-export": 1,
+    "comma-dangle": [1, "only-multiline"],
+    "arrow-parens": [1, "always"],
+    "no-unused-vars": 1,
+    "spaced-comment": 0,
+    "no-trailing-spaces": [1, { "skipBlankLines": true }],
+    "no-plusplus": 0,
+    "no-param-reassign": 0,
+    "arrow-body-style": 0,
+    "radix": [1, "as-needed"],
+    "curly": [1, "multi-line"],
+    "no-confusing-arrow": 0,
+    "no-cond-assign": 0
+  }
+}

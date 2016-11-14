@@ -1,0 +1,37 @@
+{
+  "name": "hibou-highlighter",
+  "version": "0.1.0",
+  "description": "the highlighter component of Hibou",
+  "main": "src/hylytr.js",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-flow-strip-types": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "eslint": "^3.10.0",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "flow-bin": "^0.35.0",
+    "jest-cli": "^17.0.3",
+    "webpack": "^1.13.3"
+  },
+  "scripts": {
+    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
+    "es6": "babel --watch=./src --out-dir=./es6",
+    "test": "jest",
+    "flow": "flow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willlma/hibou-highlighter.git"
+  },
+  "author": "willlma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/willlma/hibou-highlighter/issues"
+  },
+  "homepage": "https://github.com/willlma/hibou-highlighter#readme"
+}
