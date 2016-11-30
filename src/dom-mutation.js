@@ -1,10 +1,10 @@
 //@flow
 const affectedElems = new WeakMap();
 
-export function getLocation(textNode: Node) {
-  const { parentElement } = textNode;
-  let nodeIndex = [].indexOf.call(parentElement.childNodes, textNode);
-  const affected = affectedElems.get(parentElement);
+export function getLocation(textNode: Text) {
+  const parent = textNode.parentNode || document.body;
+  let nodeIndex = [].indexOf.call(parent.childNodes, textNode);
+  const affected = affectedElems.get(parent);
   if (!affected) return {
     index: nodeIndex,
     offset: 0

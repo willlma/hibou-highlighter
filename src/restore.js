@@ -1,5 +1,7 @@
 // @flow
-import { showScrollIndicator } from './selected-highlight';
+import { addScrollIndicator, placeScrollIndicator, scrollToHighlight } from './selected-highlight';
+import createElems from './create-elems';
+import { isValidRange } from './highlight';
 import type { Hylyt } from './constants';
 
 function getTextNode(parentSelector, index) {
@@ -22,33 +24,30 @@ function getHylytRange(hylyt) {
   return range;
 }
 
-function showIndicators(hylyts, hylytId) {
-  hylyts.forEach((hylyt) => {
-    if (hylyt.id === hylytId) this.scrollToHylyt(hylyt);
-    else showScrollIndicator.call(this, hylyt);
-  });
+function placeIndicators(hylyts: Array<Hylyt>) {
+  hylyts.forEach((hl) => placeScrollIndicator(hl));
 }
 
-export default function (hylyts: Hylyt | Array<Hylyt>) {
+export default function (hylyts: Array<Hylyt> | Hylyt, onClick?: Function) {
   if (!Array.isArray(hylyts)) hylyts = [hylyts];
-  const ranges = [];
   hylyts.forEach((hylyt: Hylyt) => {
-    ranges.push(getHylytRange(hylyt));
+    const range = getHylytRange(hylyt);
+    if (isValidRange(range)) {
+      hylyt.elems = createElems(range, (evt: MouseEvent) => onClick && onClick(hylyt, evt));
+    }
   });
-  for (let i = ranges.length; i--;) {
-    this.hylyt(ranges[i], hylyts[i]);
-  }
   const hashStart = '#hi-';
-  let hylytId = null;
+  hylyts.forEach((hl) => addScrollIndicator(hl, onClick));
+  let hylytId;
   if (!location.hash.indexOf(hashStart)) {
     hylytId = parseInt(location.hash.substr(hashStart.length));
+    const hylyt = hylyts.find((hl) => hl.id === hylytId);
+    if (hylyt) scrollToHighlight(hylyt);
   }
-  const boundShowIndicators = showIndicators.bind(this, hylyts);
-  boundShowIndicators(hylytId);
-  const intervalId = window.setInterval(boundShowIndicators, 5000);
+  // const intervalId = window.setInterval(() => placeIndicators(hylyts), 5000);
   window.onload = () => {
-    boundShowIndicators();
-    window.clearInterval(intervalId);
+    placeIndicators(hylyts);
+    // window.clearInterval(intervalId);
   };
   return hylytId;
 }

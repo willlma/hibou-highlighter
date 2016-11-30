@@ -17,6 +17,7 @@
     "radix": [1, "as-needed"],
     "curly": [1, "multi-line"],
     "no-confusing-arrow": 0,
-    "no-cond-assign": 0
+    "no-cond-assign": 0,
+    "no-duplicate-imports": 0
   }
 }
