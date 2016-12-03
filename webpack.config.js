@@ -18,8 +18,7 @@ module.exports = {
   entry: __dirname + '/src/index.js',
   devtool: 'inline-source-map',
   output: {
-    path: '../hibou-ch-extension/lib',
-    // path: __dirname + '/lib',
+    path: __dirname + '/lib',
     filename: outputFile,
     library: libraryName,
     libraryTarget: 'umd',

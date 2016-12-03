@@ -3,8 +3,12 @@ import { getLocation } from './dom-mutation';
 import getSelector from './get-selector';
 import createElems from './create-elems';
 import { addScrollIndicator } from './selected-highlight';
-import { tagName } from './constants';
+import { tagName, hylytModeClassName } from './constants';
 import type { Hylyt } from './constants';
+
+export function toggleSelectionBackground(toggle?: bool, elem: HTMLElement = document.body) {
+  elem.classList.toggle(hylytModeClassName, toggle);
+}
 
 function getRangeHtml(range) {
   const container = (range.commonAncestorContainer.parentElement ||

@@ -8,6 +8,7 @@ export function getIndicatorSelector(hylytId: number) {
 }
 
 export const tagName = 'hylyt';
+export const hylytModeClassName = 'hylyt-mode';
 export const rangeNotTextNodeError = 'Range start or end is not a text node.';
 export const nodeWithoutParent = "Can't replace node. Doesn't have a parent";
 
